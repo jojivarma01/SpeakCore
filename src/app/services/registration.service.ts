@@ -9,7 +9,7 @@ import { UserRegistration } from "../models/user-registration.model";
 export class RegistrationService {
 
     private readonly codingExcecise: string = "https://codingexercise.speakcore.com/";
-    private readonly newRegistrationApi: string = "/api/registrations";
+    private readonly newRegistrationApi: string = "api/registrations";
 
     constructor(private httpClient: HttpClient) {
 
