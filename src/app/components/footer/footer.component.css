@@ -1,0 +1,8 @@
+.main-footer {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    height: 100%;
+    align-items: center;
+    color: #dedede;
+}

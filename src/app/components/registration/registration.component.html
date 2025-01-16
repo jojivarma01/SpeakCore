@@ -1,0 +1,84 @@
+<div class="registration-main">
+    <div class="_header">
+        <div class="_title">{{'Contact Information' | uppercase}}</div>
+    </div>
+    <div class="_body">
+        <p class="_info">Please fill the following information required.</p>
+        <form [formGroup]="registrationForm">
+            <div class="_registration-form-control">
+                <label class="_label" for="firstName"
+                    [ngClass]="{'_error': registrationForm.controls['firstName'].touched && registrationForm.controls['firstName'].invalid}"
+                >First Name:</label>
+                <input
+                    id="firstName"
+                    formControlName="firstName" 
+                    type="text"
+                    [ngClass]="{'_error': registrationForm.controls['firstName'].touched && registrationForm.controls['firstName'].invalid}"
+                />
+            </div>
+            <div class="_registration-form-control">
+                <label class="_label" for="lastName"
+                    [ngClass]="{'_error': registrationForm.controls['lastName'].touched && registrationForm.controls['lastName'].invalid}"
+                >Last Name:</label>
+                <input
+                    id="lastName"
+                    formControlName="lastName" 
+                    type="text"
+                    [ngClass]="{'_error': registrationForm.controls['lastName'].touched && registrationForm.controls['lastName'].invalid}"
+                />
+            </div>
+            <div class="_registration-form-control">
+                <label class="_label" for="state"
+                    [ngClass]="{'_error': registrationForm.controls['state'].touched && registrationForm.controls['state'].invalid}"
+                >State:</label>
+                <select id="state" formControlName="state" aria-placeholder="Select Option">
+                    <option id="selectOption" value="" default>Select Option</option>
+                    <option *ngFor="let stateName of stateNames">{{stateName}}</option>
+                </select>
+            </div>
+            <div class="_registration-form-control">
+                <hr>
+                <p class="_info">Please provide your email address.</p>
+                <p class="_info">All meeting correspondence will be sent via email.</p>
+            </div>
+            <div class="_registration-form-control">
+                <label class="_label" for="email"
+                    [ngClass]="{'_error': registrationForm.controls['email'].touched && registrationForm.controls['email'].invalid}"
+                >Email:</label>
+                <input
+                    id="email"
+                    formControlName="email" 
+                    type="email"
+                    [ngClass]="{'_error': registrationForm.controls['email'].touched && registrationForm.controls['email'].invalid}"
+                />
+            </div>
+            <div class="_registration-form-control">
+                <label class="_label" for="confirmEmail"
+                    [ngClass]="{'_error': registrationForm.controls['confirmEmail'].touched && registrationForm.controls['confirmEmail'].invalid}"
+                >Confirm Email:</label>
+                <input
+                    id="confirmEmail"
+                    formControlName="confirmEmail" 
+                    type="email"
+                    [ngClass]="{'_error': registrationForm.controls['confirmEmail'].touched && registrationForm.controls['confirmEmail'].invalid}"
+                />
+            </div>
+            <div class="_registration-form-control _checkbox">
+                <input
+                    id="subscribeToNewsLetter"
+                    formControlName="subscribeToNewsLetter" 
+                    type="checkbox"
+                />
+                <label class="_label" for="subscribeToNewsLetter">Subscribe To NewsLetter</label>
+            </div>
+            <div class="_form-footer"> 
+                <button 
+                    class="_registration-button"
+                    type="submit"
+                    [disabled]="registrationForm.invalid"
+                    (click)="onContinue()"
+                >Continue</button>
+            </div>
+        </form>
+    </div>
+</div>

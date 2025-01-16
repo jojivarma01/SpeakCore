@@ -1,0 +1,17 @@
+.speak-core-main {
+    height: 100vh;
+    background-color:  #dedede;  /*#aaaaaa;*/
+    padding: 4px;
+
+    ._body {
+        margin-top: 16px;
+    }
+
+    ._footer{
+        position: absolute;
+        bottom: 0;
+        height: 40px;
+        background-color: #aaa;
+        width: 99%;
+    }
+}

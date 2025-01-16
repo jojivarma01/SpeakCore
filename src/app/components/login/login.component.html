@@ -1,0 +1,33 @@
+<div class="login-main">
+    <div class="_header">
+        <div class="_title">{{'Login' | uppercase}}</div>
+    </div>
+    <div class="_body">
+        <p class="_info">Please enter the case sensitive password from your official Invitation.</p>
+        <form [formGroup]="loginForm">
+            <div class="_login-form-control">
+                <label class="_label" for="password">Password:</label>
+                <input
+                    id="password"
+                    formControlName="password" 
+                    type="password"
+                />
+                {{loginForm.controls['password'].dirty &&
+                    loginForm.controls['password'].hasError('minLength')}}
+                <div *ngIf="
+                    loginForm.controls['password']?.dirty &&
+                    loginForm.controls['password']?.hasError('minLength')"
+                >Password should have minimum length of 6</div>
+            </div>
+            {{loginForm.invalid}}
+            <!-- [disabled]="loginForm.invalid" -->
+            <div class="_form-footer"> 
+                <button 
+                    class="_login-button"
+                    type="submit"
+                    (click)="onLogin()"
+                >Login</button>
+            </div>
+        </form>
+    </div>
+</div>

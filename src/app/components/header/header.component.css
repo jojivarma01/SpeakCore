@@ -1,0 +1,10 @@
+.main-header {
+    height: 3em;
+    background: #fff;
+    display: flex;
+
+    ._logo {
+        height: 80%;
+        margin: auto;
+    }
+}
