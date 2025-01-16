@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onContinue(): void {
-    console.log("registrationForm", this.registrationForm);
+    // console.log("registrationForm", this.registrationForm);
     const formValue =  this.registrationForm.value;
     const userDetails: UserRegistration = {
       firstName: formValue.firstName,
@@ -58,7 +58,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   private validEmail(control: AbstractControl): ValidationErrors | null {
-    console.log("control", control);
+    // console.log("control", control);
     const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g;
     if (!emailRegExp.test(control.value)) {
       return {email: "please enter valid email"}
