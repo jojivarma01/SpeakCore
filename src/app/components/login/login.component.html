@@ -12,19 +12,12 @@
                     formControlName="password" 
                     type="password"
                 />
-                {{loginForm.controls['password'].dirty &&
-                    loginForm.controls['password'].hasError('minLength')}}
-                <div *ngIf="
-                    loginForm.controls['password']?.dirty &&
-                    loginForm.controls['password']?.hasError('minLength')"
-                >Password should have minimum length of 6</div>
             </div>
-            {{loginForm.invalid}}
-            <!-- [disabled]="loginForm.invalid" -->
             <div class="_form-footer"> 
                 <button 
                     class="_login-button"
                     type="submit"
+                    [disabled]="loginForm.pristine || loginForm.invalid"
                     (click)="onLogin()"
                 >Login</button>
             </div>

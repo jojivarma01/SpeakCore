@@ -1,6 +1,10 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegistrationService } from '../../services/registration.service';
+import { UserRegistration } from '../../models/user-registration.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +23,11 @@ export class RegistrationComponent implements OnInit {
     "Tamil Nadu"
   ]
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private registrationService: RegistrationService,
+    private destroyRef: DestroyRef,
+  ) {}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -28,11 +36,24 @@ export class RegistrationComponent implements OnInit {
       state: ['', [Validators.required]],
       email: ['', [Validators.required]],
       confirmEmail: ['', [Validators.required]],
-      subscribeToNewsLetter: [true]
+      subscribe: [true]
     })
   }
 
   onContinue(): void {
     console.log("registrationForm", this.registrationForm);
+    const formValue =  this.registrationForm.value;
+    const userDetails: UserRegistration = {
+      firstName: formValue.firstName,
+      lastName: formValue.lastName,
+      state: formValue.state,
+      email: formValue.email,
+      subscribe: formValue.subscribe,
+    }
+    this.registrationService.saveRegistration(userDetails).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(() => {
+      this.router.navigate(['confirmation']);
+    })
   }
 }

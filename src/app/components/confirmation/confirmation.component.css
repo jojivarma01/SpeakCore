@@ -1,0 +1,31 @@
+.confirmation-main {
+    ._header {
+        background-color: #2988b5;
+        height: 2em;
+        display: flex;
+
+        ._title {
+            color: #fff;
+            margin: auto;
+        }
+    }
+
+    ._body {
+        width: 60%;
+        margin: auto;
+        margin-top: 40px;
+        border: 1px solid lightgrey;
+        padding: 16px;
+        background: #fff;
+        border-radius: 8px;
+
+        h3 {
+            margin-bottom: 12px;
+        }
+
+        ._info {
+            color: #555;
+            font-size: 12px;
+        }
+    }
+}

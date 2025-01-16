@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     console.log("login button clicked")
     if(this.loginForm?.controls?.['password']?.value === 'SpeakCore!') {
       this.authService.setUserAuthenticated();
-      this.router.navigate(['/new-registration']);
+      this.router.navigate(['new-registration']);
     }
   }
 }

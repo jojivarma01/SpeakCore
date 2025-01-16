@@ -21,7 +21,8 @@
 
         ._info {
             color: #555;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            font-size: 12px;
         }
 
         ._login-form-control {
@@ -29,7 +30,9 @@
             flex-direction: column;
 
             ._label {
-                font-weight: 500;
+                font-weight: 600;
+                font-size: 12px;
+                margin-bottom: 4px;
             }
 
             input {
