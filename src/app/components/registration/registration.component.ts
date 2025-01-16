@@ -1,6 +1,6 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component, DestroyRef, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../../services/registration.service';
 import { UserRegistration } from '../../models/user-registration.model';
@@ -34,8 +34,8 @@ export class RegistrationComponent implements OnInit {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      confirmEmail: ['', [Validators.required]],
+      email: ['', [Validators.required, this.validEmail]],
+      confirmEmail: ['', [Validators.required, this.validEmail]],
       subscribe: [true]
     })
   }
@@ -55,5 +55,15 @@ export class RegistrationComponent implements OnInit {
     ).subscribe(() => {
       this.router.navigate(['confirmation']);
     })
+  }
+
+  private validEmail(control: AbstractControl): ValidationErrors | null {
+    console.log("control", control);
+    const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g;
+    if (!emailRegExp.test(control.value)) {
+      return {email: "please enter valid email"}
+    }
+
+    return null;
   }
 }
