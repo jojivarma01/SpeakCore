@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  incorrectPassword: boolean = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -32,8 +33,12 @@ export class LoginComponent implements OnInit {
     // console.log(this.loginForm);
     // console.log("login button clicked")
     if(this.loginForm?.controls?.['password']?.value === 'SpeakCore!') {
+      this.incorrectPassword = false;
       this.authService.setUserAuthenticated();
       this.router.navigate(['new-registration']);
+    } else {
+      this.incorrectPassword = true;
+      this.loginForm?.controls?.['password'].setValue('');
     }
   }
 }

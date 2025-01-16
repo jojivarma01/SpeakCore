@@ -4,6 +4,7 @@
     </div>
     <div class="_body">
         <p class="_info">Please enter the case sensitive password from your official Invitation.</p>
+        <p *ngIf="incorrectPassword" class="_error">Incorrect Password</p>
         <form [formGroup]="loginForm">
             <div class="_login-form-control">
                 <label class="_label" for="password">Password:</label>

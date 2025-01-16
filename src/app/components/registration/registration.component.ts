@@ -38,6 +38,14 @@ export class RegistrationComponent implements OnInit {
       confirmEmail: ['', [Validators.required, this.validEmail]],
       subscribe: [true]
     })
+
+    this.registrationForm.controls['confirmEmail'].valueChanges.pipe(
+      takeUntilDestroyed(this.destroyRef),
+    ).subscribe((confirmedEmail: string) => {
+      if (this.registrationForm.controls['email'].value !== confirmedEmail) {
+        this.registrationForm.controls['confirmEmail'].setErrors({email: 'email does not match with above'});
+      }
+    })
   }
 
   onContinue(): void {
